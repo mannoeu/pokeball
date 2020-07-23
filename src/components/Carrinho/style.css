@@ -1,0 +1,89 @@
+.car {
+  padding: var(--space);
+  background: #fff;
+  box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 0;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.car .car-subtotal .product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--small-space) / 4);
+}
+.car .car-info {
+  margin-top: calc(var(--small-space) / 2);
+}
+.car .car-info,
+.car .row-payment {
+  display: flex;
+  flex-direction: column;
+}
+.car .row-total {
+  display: flex;
+  justify-content: space-between;
+}
+.car .row-total .value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.muted {
+  color: var(--grey);
+  font-size: 0.8rem;
+}
+.product .img-product {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.car .row-payment {
+  margin-top: var(--small-space);
+}
+.row-payment button {
+  padding: 10px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.car .row-payment button:hover {
+  filter: brightness(90%);
+}
+
+/* ==================================*/
+/* ============== Fire ==============*/
+/* ==================================*/
+.car.fire h3 {
+  margin-bottom: var(--small-space);
+  color: var(--primary-fire);
+}
+.car.fire .row-payment button {
+  background: var(--primary-fire);
+}
+
+/* =================================*/
+/* ============= Water =============*/
+/* =================================*/
+.car.water h3 {
+  color: var(--primary-water);
+}
+.car.water .row-payment button {
+  background: var(--primary-water);
+}
+
+@media (max-width: 800px) {
+  .car {
+    bottom: 0;
+    max-width: 100%;
+  }
+}

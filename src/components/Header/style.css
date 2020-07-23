@@ -1,0 +1,76 @@
+header {
+  width: 100vw;
+  padding: var(--small-space) calc(var(--space) * 3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(204, 204, 204);
+}
+header img {
+  max-width: 120px;
+}
+header .menu-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 0 1 450px;
+}
+header .menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+header .menu-item input {
+  background: var(--light-grey);
+  border: 0;
+  padding: calc(var(--small-space) / 2) calc(var(--space) + 16px);
+  width: 100%;
+  transition: outline 0.2s linear;
+}
+header .menu-item input:focus + label svg {
+  color: var(--dark);
+  transition: color 0.2s linear;
+}
+header .menu-item input:focus {
+  outline: 1px solid var(--dark);
+}
+
+header .menu-item label {
+  position: absolute;
+  left: 10px;
+}
+header .menu-item svg {
+  color: var(--grey);
+}
+header button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+header .menu-item .category {
+  padding: calc(var(--small-space) / 2) var(--space);
+  border-radius: 6px;
+  color: #fff;
+}
+header .menu-item .category.water {
+  background: var(--primary-water);
+}
+header .menu-item .category.fire {
+  background: var(--primary-fire);
+}
+
+@media (max-width: 668px) {
+  header {
+    height: calc(var(--space) * 4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: calc(var(--small-space));
+  }
+  header .menu-items {
+    margin-top: calc(var(--small-space) / 2);
+    width: 100%;
+  }
+}
