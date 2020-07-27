@@ -7,12 +7,14 @@
   --grey: #999999;
   --light-grey: #eeeeee;
   --dark: #191919;
+  --success: #45f18a;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /*  outline: 1px solid red; */
 }
 
 body {
@@ -29,4 +31,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+button {
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(90%);
 }

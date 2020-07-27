@@ -1,0 +1,70 @@
+.poke-container {
+  max-width: 240px;
+  display: grid;
+  place-items: center;
+  grid-gap: 10px;
+  width: 100%;
+  padding: var(--space);
+  background: #ffffff;
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+}
+
+.poke-container:hover {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.poke-image {
+  width: 100px;
+  height: 100px;
+  background: rgb(126, 120, 120);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.poke-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.poke-info h1 {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 37px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.poke-info {
+  display: grid;
+  place-items: center;
+}
+.poke-info p {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  color: #999999;
+}
+.poke-container button {
+  padding: 10px;
+  border-radius: 4px;
+  border: 0;
+  color: #fff;
+}
+
+.poke-info.fire h1 {
+  color: var(--primary-fire);
+}
+.poke-container.fire button {
+  background: var(--primary-fire);
+}
+
+.poke-info.water h1 {
+  color: var(--primary-water);
+}
+.poke-container.water button {
+  background: var(--primary-water);
+}

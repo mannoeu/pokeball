@@ -1,10 +1,10 @@
 header {
-  width: 100vw;
+  width: 100%;
   padding: var(--small-space) calc(var(--space) * 3);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(204, 204, 204);
+  background: #f4f4f4;
 }
 header img {
   max-width: 120px;
@@ -27,6 +27,8 @@ header .menu-item input {
   padding: calc(var(--small-space) / 2) calc(var(--space) + 16px);
   width: 100%;
   transition: outline 0.2s linear;
+  background: #e8e8e8;
+  border-radius: 4px;
 }
 header .menu-item input:focus + label svg {
   color: var(--dark);

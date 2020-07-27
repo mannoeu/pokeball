@@ -1,49 +1,83 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useObserver } from "mobx-react";
+import { formatPrice } from "../../utils/utils";
+import { StoreContext } from "../../store/index";
+
+import { FiCheckCircle } from "react-icons/fi";
 
 import "./style.css";
 
 function Carrinho() {
-  return (
-    <div className="car fire">
+  const store = useContext(StoreContext);
+  const [visibility, setVisibility] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+
+  function purchase() {
+    store.checkOut();
+    setVisibility(true);
+    setTimeout(() => {
+      setVisibility(false);
+    }, 2400);
+  }
+
+  return useObserver(() => (
+    <div className={`cart ${store.type}`}>
       <div className="products">
-        <h3>Carrinho</h3>
-        <div className="car-subtotal">
-          <div className="product">
-            <div className="img-product"></div>
-            <span className="muted">R$ 270,00</span>
-          </div>
-          <div className="product">
-            <div className="img-product"></div>
-            <span className="muted">R$ 270,00</span>
-          </div>
-          <div className="product">
-            <div className="img-product"></div>
-            <span className="muted">R$ 270,00</span>
-          </div>
-          <div className="product">
-            <div className="img-product"></div>
-            <span className="muted">R$ 270,00</span>
-          </div>
+        <div className="cart-title">
+          <h3>Carrinho</h3>
+          <span className="muted">{store.products.length} pokemon</span>
         </div>
+        {store.products.length > 0 ? (
+          <div className="cart-subtotal">
+            {store.products.map((product) => (
+              <div className="product">
+                <div className="img-product"></div>
+                <span className="muted">{product.name}</span>
+                <span className="muted">{formatPrice(product.price)}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="cart-subtotal">
+            <span className="muted">Seu carrinho está vazio</span>
+          </div>
+        )}
       </div>
-      <div className="car-info">
+      <div className="cart-info">
         <div className="row-total">
           <div className="column">
             <h4>Total</h4>
           </div>
           <div className="column">
             <div className="value">
-              <h4>R$ 270,00</h4>
-              <span className="muted">em até 2x sem juros</span>
+              <h4>{formatPrice(store.amount)}</h4>
+              {store.installments > 0 && (
+                <span className="muted">em até 2x sem juros</span>
+              )}
             </div>
           </div>
         </div>
         <div className="row-payment">
-          <button>Finalizar</button>
+          <button
+            disabled={store.products.length > 0 ? !disabled : disabled}
+            onClick={() => purchase()}
+          >
+            Finalizar
+          </button>
         </div>
       </div>
+
+      {visibility && (
+        <div className="modal-success">
+          <div className="content">
+            <FiCheckCircle />
+            <h1>Compra realizada!</h1>
+            <span>Verifique sua pokebola e divirta-se</span>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  ));
 }
 
 export default Carrinho;

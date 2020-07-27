@@ -4,12 +4,16 @@ import { StoreProvider } from "./store";
 
 import Carrinho from "./components/Carrinho";
 import Header from "./components/Header";
+import ListPokemon from "./components/ListPokemon";
 
 function App() {
   return useObserver(() => (
     <StoreProvider>
       <Header />
-      <Carrinho />
+      <div className="container">
+        <ListPokemon />
+        <Carrinho />
+      </div>
     </StoreProvider>
   ));
 }

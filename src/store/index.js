@@ -1,18 +1,22 @@
 import React, { createContext } from "react";
 import { useLocalStore } from "mobx-react";
 
+import api from "../services/api";
+
 export const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
   const store = useLocalStore(() => ({
     amount: 0,
     products: [],
-    installments: 1,
+    installments: 0,
+    data: [],
+    type: "fire",
 
     addOnCart: (product) => {
       store.products.push(product);
-      this.subTotal();
-      this.calculateInstallments();
+      store.subTotal();
+      store.calculateInstallments();
     },
 
     subTotal: () => {
@@ -23,7 +27,7 @@ export const StoreProvider = ({ children }) => {
       return store.mount;
     },
 
-    cleanCart: () => {
+    checkOut: () => {
       store.products = [];
       store.amount = 0;
     },
@@ -32,6 +36,32 @@ export const StoreProvider = ({ children }) => {
       if (store.amount > 200) {
         store.installments = 2;
       }
+    },
+
+    getPokemon: async () => {
+      const res = await api.get(`/type/${store.type}`);
+      store.data.push(...res.data.pokemon);
+    },
+
+    // arrumar
+    filteredPokemon: async (value) => {
+      await store.getPokemon();
+
+      try {
+        const filtered = store.data.filter((poke) =>
+          poke.pokemon.name.includes(value.toLowerCase())
+        );
+        store.data = [];
+        store.data.push(...filtered);
+      } catch (err) {
+        throw err;
+      }
+    },
+
+    changeType: async () => {
+      store.type === "fire" ? (store.type = "water") : (store.type = "fire");
+      store.data = [];
+      await store.getPokemon();
     },
   }));
 
