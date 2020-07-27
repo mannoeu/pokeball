@@ -9,3 +9,7 @@ export const generatePrice = () => {
   const value = Math.floor(Math.random() * 100);
   return value;
 };
+
+export const toggleCart = () => {
+  document.querySelector(".cart").classList.toggle("show");
+};

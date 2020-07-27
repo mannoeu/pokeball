@@ -63,9 +63,25 @@ header .menu-item .category.fire {
   background: var(--primary-fire);
 }
 
+.open-cart {
+  cursor: pointer;
+  color: var(--grey);
+  transition: color 0.2s linear;
+  display: none;
+}
+.open-cart:hover {
+  color: var(--dark);
+}
+
+@media (max-width: 998px) {
+  .open-cart {
+    display: block;
+  }
+}
+
 @media (max-width: 668px) {
   header {
-    height: calc(var(--space) * 4);
+    height: calc(var(--space) * 6);
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -74,5 +90,12 @@ header .menu-item .category.fire {
   header .menu-items {
     margin-top: calc(var(--small-space) / 2);
     width: 100%;
+  }
+  header .menu-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .open-cart {
+    margin-left: var(--space);
   }
 }

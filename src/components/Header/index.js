@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useObserver } from "mobx-react";
 import { StoreContext } from "../../store";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import { toggleCart } from "../../utils/utils";
 
 import logo from "../../assets/logo.svg";
 
@@ -36,6 +37,7 @@ function Header() {
             <FiSearch />
           </label>
         </div>
+
         <div className="menu-item">
           <button
             className={`category ${store.type}`}
@@ -44,6 +46,9 @@ function Header() {
             {store.type}
           </button>
         </div>
+        <span className="open-cart" onClick={() => toggleCart()}>
+          <FiShoppingCart />
+        </span>
       </div>
     </header>
   ));

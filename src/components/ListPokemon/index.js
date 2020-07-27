@@ -15,8 +15,8 @@ function ListPokemon() {
 
   return useObserver(() => (
     <div className="grid-pokemon">
-      {store.data.map((poke) => (
-        <PokemonCard key={poke.pokemon.name} pokemon={poke.pokemon} />
+      {store.data.map((poke, index) => (
+        <PokemonCard key={index} pokemon={poke.pokemon} />
       ))}
     </div>
   ));
